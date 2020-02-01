@@ -55,6 +55,7 @@ public class Walker : MonoBehaviour
         leg.hip.targetRotation = set.hip;
         leg.knee.targetRotation = set.knee;
         leg.ankle.targetRotation = set.ankle;
+        leg.constantForce.enabled = set.useConstantForce;
     }
 
     [System.Serializable]
@@ -63,13 +64,15 @@ public class Walker : MonoBehaviour
         public Quaternion hip = Quaternion.identity;
         public Quaternion knee = Quaternion.identity;
         public Quaternion ankle = Quaternion.identity;
+        public bool useConstantForce = false;
     }
 
     [System.Serializable]
     private class Leg
     {
-        public ConfigurableJoint hip;
-        public ConfigurableJoint knee;
-        public ConfigurableJoint ankle;
+        public ConfigurableJoint hip = null;
+        public ConfigurableJoint knee = null;
+        public ConfigurableJoint ankle = null;
+        public ConstantForce constantForce = null;
     }
 }
