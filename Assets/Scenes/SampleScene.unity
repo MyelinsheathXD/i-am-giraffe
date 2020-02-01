@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c3c6b92b4768b4d999ed1f56dd7bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakImpulse: 1.5
+  breakImpulse: 1.1
 --- !u!1 &272148674
 GameObject:
   m_ObjectHideFlags: 0

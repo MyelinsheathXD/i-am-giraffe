@@ -14,7 +14,7 @@ public class TestPlayer : MonoBehaviour
     void Update()
     {
         float vIn = Input.GetAxisRaw("Vertical");
-        float hIn = Input.GetAxis("Horizontal");
+        float hIn = Input.GetAxisRaw("Horizontal");
 
         this.transform.position += new Vector3(hIn, 0, vIn) * 3f * Time.deltaTime;
     }
