@@ -13,39 +13,85 @@ public class Walker : MonoBehaviour
     }
 
     [SerializeField]
-    private Leg[] legs;
+    private Leg[] legs = null;
+
+    [SerializeField]
+    private Rigidbody body = null;
+
+    [SerializeField]
+    private float forwardForce = 0f;
 
     [Header("Keyframes")]
 
     [SerializeField]
-    private TargetSet idle = null;
+    private TargetSet frontStepForward = null;
 
     [SerializeField]
-    private TargetSet raised = null;
+    private TargetSet frontStepExtended = null;
 
     [SerializeField]
-    private TargetSet raisedExtended = null;
+    private TargetSet frontStepGrounded = null;
+
+    [SerializeField]
+    private TargetSet backStepRetracted = null;
+
+    [SerializeField]
+    private TargetSet backStepForward = null;
+
+    [SerializeField]
+    private TargetSet backStepExtended = null;
+
+    [SerializeField]
+    private TargetSet backStepGrounded = null;
 
     private void Start()
     {
         StartCoroutine(WalkingQuestionMark());
     }
 
+    private void FixedUpdate()
+    {
+        body.AddForceAtPosition(Vector3.forward * forwardForce * Time.fixedDeltaTime, body.transform.position + body.transform.up * 3f, ForceMode.Impulse);
+    }
+
+    private float delay = 0.15f;
+
     private IEnumerator WalkingQuestionMark()
     {
+        yield return new WaitForSeconds(3.0f);
         while (true)
         {
-            yield return new WaitForSeconds(0.5f);
-            SetTargets((int)LegIndex.FrontLeft, raised);
-            SetTargets((int)LegIndex.BackRight, raised);
-            SetTargets((int)LegIndex.FrontRight, idle);
-            SetTargets((int)LegIndex.BackLeft, idle);
+            yield return new WaitForSeconds(delay);
+            SetTargets((int)LegIndex.BackRight, backStepRetracted);
+            yield return new WaitForSeconds(delay);
+            SetTargets((int)LegIndex.BackRight, backStepForward);
+            yield return new WaitForSeconds(delay);
+            SetTargets((int)LegIndex.BackRight, backStepExtended);
+            yield return new WaitForSeconds(delay);
+            SetTargets((int)LegIndex.BackRight, backStepGrounded);
 
-            yield return new WaitForSeconds(0.5f);
-            SetTargets((int)LegIndex.FrontLeft, idle);
-            SetTargets((int)LegIndex.BackRight, idle);
-            SetTargets((int)LegIndex.FrontRight, raised);
-            SetTargets((int)LegIndex.BackLeft, raised);
+            yield return new WaitForSeconds(delay);
+            SetTargets((int)LegIndex.FrontRight, frontStepForward);
+            yield return new WaitForSeconds(delay);
+            SetTargets((int)LegIndex.FrontRight, frontStepExtended);
+            yield return new WaitForSeconds(delay);
+            SetTargets((int)LegIndex.FrontRight, frontStepGrounded);
+
+            yield return new WaitForSeconds(delay);
+            SetTargets((int)LegIndex.BackLeft, backStepRetracted);
+            yield return new WaitForSeconds(delay);
+            SetTargets((int)LegIndex.BackLeft, backStepForward);
+            yield return new WaitForSeconds(delay);
+            SetTargets((int)LegIndex.BackLeft, backStepExtended);
+            yield return new WaitForSeconds(delay);
+            SetTargets((int)LegIndex.BackLeft, backStepGrounded);
+
+            yield return new WaitForSeconds(delay);
+            SetTargets((int)LegIndex.FrontLeft, frontStepForward);
+            yield return new WaitForSeconds(delay);
+            SetTargets((int)LegIndex.FrontLeft, frontStepExtended);
+            yield return new WaitForSeconds(delay);
+            SetTargets((int)LegIndex.FrontLeft, frontStepGrounded);
         }
     }
 
