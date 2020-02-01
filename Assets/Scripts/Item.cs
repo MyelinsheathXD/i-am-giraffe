@@ -11,4 +11,21 @@ public class Item : MonoBehaviour
         Clock,
         Vase
     }
+
+    [SerializeField]
+    private float breakImpulse = 2f;
+
+    private void Break()
+    {
+        Destroy(this.gameObject);
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        float impulseMagnitude = collision.impulse.magnitude;
+        if (impulseMagnitude >= breakImpulse)
+        {
+            Break();
+        }
+    }
 }
