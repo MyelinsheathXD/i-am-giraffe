@@ -32,7 +32,6 @@ public class MouthController : MonoBehaviour
 
     private void Grab(Rigidbody other)
     {
-        Debug.Log(other.name);
         if (joint == null)
         {
             joint = this.gameObject.AddComponent<FixedJoint>();
