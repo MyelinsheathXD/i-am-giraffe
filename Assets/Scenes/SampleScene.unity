@@ -1910,7 +1910,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 790074392422265101}
   m_ConnectedBody: {fileID: 8962624203170668320}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 1}
+  m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0.43932495, y: 1.68849, z: 0.3410512}
   serializedVersion: 2
@@ -1932,11 +1932,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: 0
+    limit: -60
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 0
+    limit: 60
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -2228,7 +2228,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 1479514758602232276}
   m_ConnectedBody: {fileID: 5277504447679915837}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 1}
+  m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: -0.00000090524554, y: 1.2264566, z: 0.00000090897095}
   serializedVersion: 2
@@ -3281,7 +3281,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 3751528158780308064}
   m_ConnectedBody: {fileID: 7387206083441938578}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 1}
+  m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: -0.0000004917383, y: 1.1379384, z: -0.0000005513429}
   serializedVersion: 2
@@ -3737,7 +3737,7 @@ ConfigurableJoint:
     positionSpring: 0
     positionDamper: 0
     maximumForce: 3.4028233e+38
-  m_TargetRotation: {x: 2, y: 0, z: 0, w: 1}
+  m_TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_TargetAngularVelocity: {x: 0, y: 0, z: 0}
   m_RotationDriveMode: 0
   m_AngularXDrive:
@@ -3880,7 +3880,7 @@ ConfigurableJoint:
     positionSpring: 0
     positionDamper: 0
     maximumForce: 3.4028233e+38
-  m_TargetRotation: {x: -2, y: 0, z: 0, w: 1}
+  m_TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_TargetAngularVelocity: {x: 0, y: 0, z: 0}
   m_RotationDriveMode: 0
   m_AngularXDrive:
@@ -4042,7 +4042,7 @@ ConfigurableJoint:
     positionSpring: 0
     positionDamper: 0
     maximumForce: 3.4028233e+38
-  m_TargetRotation: {x: -2, y: 0, z: 0, w: 1}
+  m_TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_TargetAngularVelocity: {x: 0, y: 0, z: 0}
   m_RotationDriveMode: 0
   m_AngularXDrive:
@@ -4322,7 +4322,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 6072114541111873208}
   m_ConnectedBody: {fileID: 5124116285977558425}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 1}
+  m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0.0000010626391, y: 1.2214069, z: -0.0000008046627}
   serializedVersion: 2
@@ -4797,7 +4797,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 7200162723264193602}
   m_ConnectedBody: {fileID: 8962624203170668320}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 1}
+  m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0.35962063, y: -0.12832539, z: 0.35087544}
   serializedVersion: 2
@@ -4819,11 +4819,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: 0
+    limit: -60
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 0
+    limit: 60
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -4940,7 +4940,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 7215485235384213637}
   m_ConnectedBody: {fileID: 8962624203170668320}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 1}
+  m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0.3579836, y: -0.12693475, z: -0.36486027}
   serializedVersion: 2
@@ -4962,11 +4962,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: 0
+    limit: -60
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 0
+    limit: 60
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -5069,7 +5069,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 7313228973889843522}
   m_ConnectedBody: {fileID: 6072114541111873209}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 1}
+  m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: -0.00000032782555, y: 0.15279356, z: -0.0000006608898}
   serializedVersion: 2
@@ -5310,7 +5310,7 @@ ConfigurableJoint:
     positionSpring: 0
     positionDamper: 0
     maximumForce: 3.4028233e+38
-  m_TargetRotation: {x: 2, y: 0, z: 0, w: 1}
+  m_TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_TargetAngularVelocity: {x: 0, y: 0, z: 0}
   m_RotationDriveMode: 0
   m_AngularXDrive:
@@ -5480,11 +5480,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: 0
+    limit: -60
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 0
+    limit: 60
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -5832,7 +5832,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 8205727525041999812}
   m_ConnectedBody: {fileID: 1479514758602232277}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 1}
+  m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: -0.000000007450581, y: 0.1513861, z: -0.0000013383105}
   serializedVersion: 2
@@ -6091,7 +6091,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 8905379032647788429}
   m_ConnectedBody: {fileID: 4915174329770945953}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 1}
+  m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0.0000001229346, y: 1.1350309, z: -0.0000008791685}
   serializedVersion: 2
@@ -6387,7 +6387,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 9127938616107964121}
   m_ConnectedBody: {fileID: 3751528158780308065}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 1}
+  m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0.0000012135133, y: 0.19549303, z: -0.0000024437904}
   serializedVersion: 2
@@ -6557,7 +6557,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 9213704565557915929}
   m_ConnectedBody: {fileID: 8905379032647788430}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 1}
+  m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0.0000008312054, y: 0.19292594, z: -0.0000008046626}
   serializedVersion: 2
