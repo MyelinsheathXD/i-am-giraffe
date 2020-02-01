@@ -1055,7 +1055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetHeight: 3
-  strength: 20
+  strength: 25
   leadTime: 0.1
   inRelationTo: {fileID: 0}
   mask:
