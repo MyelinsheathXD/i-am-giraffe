@@ -79,8 +79,8 @@ public class Walker : MonoBehaviour
 
     private void Update()
     {
-        float hIn = Input.GetAxis("Horizontal");
-        float vIn = Input.GetAxis("Vertical");
+        float hIn = Input.GetAxisRaw("Horizontal");
+        float vIn = Input.GetAxisRaw("Vertical");
         if (hIn != 0 || vIn != 0)
         {
             torsoDirection.facingDirection = Quaternion.Euler(0, hIn * turnSpeed * Time.deltaTime, 0) * torsoDirection.facingDirection;
@@ -89,7 +89,7 @@ public class Walker : MonoBehaviour
                 walkingInPlace = true;
                 walking = false;
             }
-            else if (hIn == 0)
+            else
             {
                 walkBackwards = (vIn < 0);
                 walking = true;
@@ -112,6 +112,7 @@ public class Walker : MonoBehaviour
         body.AddForceAtPosition(forwardDir * forwardForce * Time.fixedDeltaTime, body.transform.position + body.transform.up * 3f, ForceMode.Impulse);
     }
 
+    private float stepOffset = 0.2f;
     private float delay = 0.10f;
 
     private IEnumerator WalkForward()
@@ -119,20 +120,20 @@ public class Walker : MonoBehaviour
         while (true)
         {
             yield return StartCoroutine(WaitForWalking());
-            yield return TakeStep(LegIndex.BackRight, walkBackwards);
-            yield return new WaitForSeconds(delay * 0.05f);
+            StartCoroutine(TakeStep(LegIndex.BackRight, walkBackwards));
+            yield return new WaitForSeconds(stepOffset);
 
             yield return StartCoroutine(WaitForWalking());
-            yield return TakeStep(LegIndex.FrontRight, walkBackwards);
-            yield return new WaitForSeconds(delay * 0.05f);
+            StartCoroutine(TakeStep(LegIndex.FrontRight, walkBackwards));
+            yield return new WaitForSeconds(stepOffset);
 
             yield return StartCoroutine(WaitForWalking());
-            yield return TakeStep(LegIndex.BackLeft, walkBackwards);
-            yield return new WaitForSeconds(delay * 0.05f);
+            StartCoroutine(TakeStep(LegIndex.BackLeft, walkBackwards));
+            yield return new WaitForSeconds(stepOffset);
 
             yield return StartCoroutine(WaitForWalking());
-            yield return TakeStep(LegIndex.FrontLeft, walkBackwards);
-            yield return new WaitForSeconds(delay * 0.05f);
+            StartCoroutine(TakeStep(LegIndex.FrontLeft, walkBackwards));
+            yield return new WaitForSeconds(stepOffset);
         }
     }
 
@@ -141,20 +142,20 @@ public class Walker : MonoBehaviour
         while (true)
         {
             yield return StartCoroutine(WaitForWalkInPlace());
-            yield return TakeStepInPlace(LegIndex.BackRight);
-            yield return new WaitForSeconds(delay * 0.05f);
+            StartCoroutine(TakeStepInPlace(LegIndex.BackRight));
+            yield return new WaitForSeconds(stepOffset);
 
             yield return StartCoroutine(WaitForWalkInPlace());
-            yield return TakeStepInPlace(LegIndex.FrontRight);
-            yield return new WaitForSeconds(delay * 0.05f);
+            StartCoroutine(TakeStepInPlace(LegIndex.FrontRight));
+            yield return new WaitForSeconds(stepOffset);
 
             yield return StartCoroutine(WaitForWalkInPlace());
-            yield return TakeStepInPlace(LegIndex.BackLeft);
-            yield return new WaitForSeconds(delay * 0.05f);
+            StartCoroutine(TakeStepInPlace(LegIndex.BackLeft));
+            yield return new WaitForSeconds(stepOffset);
 
             yield return StartCoroutine(WaitForWalkInPlace());
-            yield return TakeStepInPlace(LegIndex.FrontLeft);
-            yield return new WaitForSeconds(delay * 0.05f);
+            StartCoroutine(TakeStepInPlace(LegIndex.FrontLeft));
+            yield return new WaitForSeconds(stepOffset);
         }
     }
 
