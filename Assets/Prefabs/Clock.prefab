@@ -265,5 +265,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakImpulse: 4
-  brokenPrefab: {fileID: 8914509351359977260, guid: d238fe9716d1d72439c20621f3f71327,
+  brokenPrefab: {fileID: 2309561652413179601, guid: d238fe9716d1d72439c20621f3f71327,
     type: 3}
