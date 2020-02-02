@@ -5,31 +5,46 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField]
-    private Transform[] targets = null;
+    private Transform followFront = null;
+
+    [SerializeField]
+    private Transform followBack = null;
+
+    [SerializeField]
+    private FaceDirection faceDirection = null;
+
+    [SerializeField]
+    private float followDistance = 5f;
+
+    [SerializeField]
+    private float followHeight = 5f;
+
+    [SerializeField]
+    private float lookAngle = 45f;
+
+    [SerializeField]
+    private Transform lookAt = null;
 
     private Vector3 offset = Vector3.zero;
     private Vector3 smoothDampVelocity = Vector3.zero;
+    private Vector3 smoothDampForward = Vector3.zero;
 
     private void Start()
     {
-        offset = this.transform.position - GetAverageTargetPosition();
+        
     }
 
     private void LateUpdate()
     {
-        Vector3 targetPos = GetAverageTargetPosition() + offset;
-        this.transform.position = Vector3.SmoothDamp(this.transform.position, targetPos, ref smoothDampVelocity, 0.3f);
-    }
+        Vector3 targetForward = faceDirection.facingDirection;
 
-    private Vector3 GetAverageTargetPosition()
-    {
-        Vector3 avgTargetPos = Vector3.zero;
-        foreach (Transform t in targets)
-        {
-            avgTargetPos += t.position;
-        }
-        avgTargetPos /= (float)targets.Length;
-        avgTargetPos.y = 0;
-        return avgTargetPos;
+        Vector3 targetPos = followBack.position - (targetForward * followDistance) + (Vector3.up * followHeight);
+        this.transform.position = Vector3.SmoothDamp(this.transform.position, targetPos, ref smoothDampVelocity, 0.3f);
+
+        this.transform.forward = Vector3.SmoothDamp(this.transform.forward, targetForward, ref smoothDampForward, 1f);
+
+        Vector3 eulerAngles = this.transform.eulerAngles;
+        eulerAngles.x = lookAngle;
+        this.transform.eulerAngles = eulerAngles;
     }
 }

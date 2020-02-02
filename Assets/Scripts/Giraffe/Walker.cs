@@ -24,7 +24,15 @@ public class Walker : MonoBehaviour
     [SerializeField]
     private FaceDirection torsoDirection = null;
 
+    [SerializeField]
+    private float turnSpeed = 45f;
+
     [Header("Keyframes")]
+
+    [SerializeField]
+    private TargetSet defaultStep = null;
+
+    [Header("Forward")]
 
     [SerializeField]
     private TargetSet frontStepForward = null;
@@ -50,12 +58,22 @@ public class Walker : MonoBehaviour
     [SerializeField]
     private TargetSet backStepGroundedStraight = null;
 
+    [Header("In Place")]
+
+    [SerializeField]
+    private TargetSet frontStepUp = null;
+
+    [SerializeField]
+    private TargetSet backStepUp = null;
+
     private bool walking = false;
+    private bool walkingInPlace = false;
     private bool[] takingStep = new bool[4];
 
     private void Start()
     {
-        StartCoroutine(WalkingQuestionMark());
+        StartCoroutine(WalkForward());
+        StartCoroutine(WalkInPlace());
     }
 
     private void Update()
@@ -64,11 +82,21 @@ public class Walker : MonoBehaviour
         float vIn = Input.GetAxis("Vertical");
         if (hIn != 0 || vIn != 0)
         {
-            torsoDirection.facingDirection = new Vector3(hIn, 0, vIn);
-            walking = true;
+            torsoDirection.facingDirection = Quaternion.Euler(0, hIn * turnSpeed * Time.deltaTime, 0) * torsoDirection.facingDirection;
+            if (vIn == 0)
+            {
+                walkingInPlace = true;
+                walking = false;
+            }
+            else if (hIn == 0)
+            {
+                walking = true;
+                walkingInPlace = false;
+            }
         }
         else
         {
+            walkingInPlace = false;
             walking = false;
         }
     }
@@ -84,7 +112,7 @@ public class Walker : MonoBehaviour
 
     private float delay = 0.10f;
 
-    private IEnumerator WalkingQuestionMark()
+    private IEnumerator WalkForward()
     {
         while (true)
         {
@@ -102,6 +130,28 @@ public class Walker : MonoBehaviour
 
             yield return StartCoroutine(WaitForWalking());
             yield return TakeStep(LegIndex.FrontLeft);
+            yield return new WaitForSeconds(delay * 0.05f);
+        }
+    }
+
+    private IEnumerator WalkInPlace()
+    {
+        while (true)
+        {
+            yield return StartCoroutine(WaitForWalkInPlace());
+            yield return TakeStepInPlace(LegIndex.BackRight);
+            yield return new WaitForSeconds(delay * 0.05f);
+
+            yield return StartCoroutine(WaitForWalkInPlace());
+            yield return TakeStepInPlace(LegIndex.FrontRight);
+            yield return new WaitForSeconds(delay * 0.05f);
+
+            yield return StartCoroutine(WaitForWalkInPlace());
+            yield return TakeStepInPlace(LegIndex.BackLeft);
+            yield return new WaitForSeconds(delay * 0.05f);
+
+            yield return StartCoroutine(WaitForWalkInPlace());
+            yield return TakeStepInPlace(LegIndex.FrontLeft);
             yield return new WaitForSeconds(delay * 0.05f);
         }
     }
@@ -149,6 +199,25 @@ public class Walker : MonoBehaviour
         takingStep[legIndexValue] = false;
     }
 
+    private IEnumerator TakeStepInPlace(LegIndex legIndex)
+    {
+        int legIndexValue = (int)legIndex;
+        takingStep[legIndexValue] = true;
+        if (LegIndex.FrontLeft == legIndex || LegIndex.FrontRight == legIndex)
+        {
+            SetTargets(legIndexValue, frontStepUp);
+            yield return new WaitForSeconds(delay * 3);
+            SetTargets(legIndexValue, defaultStep);
+        }
+        else
+        {
+            SetTargets(legIndexValue, backStepUp);
+            yield return new WaitForSeconds(delay * 3);
+            SetTargets(legIndexValue, defaultStep);
+        }
+        takingStep[legIndexValue] = false;
+    }
+
     private IEnumerator WaitForNotTakingStep(LegIndex legIndex)
     {
         int legIndexValue = (int)legIndex;
@@ -161,6 +230,14 @@ public class Walker : MonoBehaviour
     private IEnumerator WaitForWalking()
     {
         while (!walking)
+        {
+            yield return null;
+        }
+    }
+
+    private IEnumerator WaitForWalkInPlace()
+    {
+        while (!walkingInPlace)
         {
             yield return null;
         }

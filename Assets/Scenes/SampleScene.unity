@@ -1059,11 +1059,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dab50d44ea348d46ab607323d0f0751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets:
-  - {fileID: 6647874879234233126}
-  - {fileID: 1201297781010840591}
-  - {fileID: 7047629339765725002}
-  - {fileID: 872009239106316754}
+  followFront: {fileID: 5967425394410044941}
+  followBack: {fileID: 6139840098930395419}
+  faceDirection: {fileID: 8962624203170668323}
+  followDistance: 7.7
+  followHeight: 7.3
+  lookAngle: 30
+  lookAt: {fileID: 6139840098930395419}
 --- !u!1 &1265874075
 GameObject:
   m_ObjectHideFlags: 0
@@ -3634,7 +3636,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3172549102345557380}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce76a7790105482478cf176f639a30a4, type: 3}
   m_Name: 
@@ -6112,7 +6114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &7614004941665487702
 GameObject:
   m_ObjectHideFlags: 0
@@ -7176,7 +7178,7 @@ BoxCollider:
   m_GameObject: {fileID: 8962624203170668319}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.36, y: 2.46, z: 1}
   m_Center: {x: -0.04, y: 0.91, z: 0}
@@ -7228,6 +7230,12 @@ MonoBehaviour:
   body: {fileID: 8962624203170668320}
   forwardForce: 0
   torsoDirection: {fileID: 8962624203170668323}
+  turnSpeed: 20
+  defaultStep:
+    hip: {x: 0, y: 0, z: 0, w: 1}
+    knee: {x: 0, y: 0, z: 0, w: 1}
+    ankle: {x: 0, y: 0, z: 0, w: 1}
+    useConstantForce: 1
   frontStepForward:
     hip: {x: 1.6, y: 0, z: 0, w: 1}
     knee: {x: -0.7, y: 0, z: 0, w: 1}
@@ -7268,6 +7276,16 @@ MonoBehaviour:
     knee: {x: 0, y: 0, z: 0, w: 1}
     ankle: {x: 0, y: 0, z: 0, w: 1}
     useConstantForce: 1
+  frontStepUp:
+    hip: {x: 0, y: 0, z: 0, w: 1}
+    knee: {x: -0.7, y: 0, z: 0, w: 1}
+    ankle: {x: 0, y: 0, z: 0, w: 1}
+    useConstantForce: 0
+  backStepUp:
+    hip: {x: 0, y: 0, z: 0, w: 1}
+    knee: {x: 2, y: 0, z: 0, w: 1}
+    ankle: {x: 0, y: 0, z: 0, w: 1}
+    useConstantForce: 0
 --- !u!114 &8962624203170668325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7334,7 +7352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &9110163306123835023
 Rigidbody:
   m_ObjectHideFlags: 0
