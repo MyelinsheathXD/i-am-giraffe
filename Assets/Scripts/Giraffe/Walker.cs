@@ -170,6 +170,10 @@ public class Walker : MonoBehaviour
             Vector3 point = body.transform.InverseTransformPoint(leg.ankle.transform.position);
             while (point.y < 3f)
             {
+                if (walkingInPlace)
+                {
+                    yield break;
+                }
                 yield return null;
                 point = body.transform.InverseTransformPoint(leg.ankle.transform.position);
             }
@@ -188,6 +192,10 @@ public class Walker : MonoBehaviour
             Vector3 point = body.transform.InverseTransformPoint(leg.ankle.transform.position);
             while (point.y < 0.6f)
             {
+                if (walkingInPlace)
+                {
+                    yield break;
+                }
                 yield return null;
                 point = body.transform.InverseTransformPoint(leg.ankle.transform.position);
             }

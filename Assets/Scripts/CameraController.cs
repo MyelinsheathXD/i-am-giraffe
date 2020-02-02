@@ -5,9 +5,6 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField]
-    private Transform followFront = null;
-
-    [SerializeField]
     private Transform followBack = null;
 
     [SerializeField]
@@ -21,10 +18,6 @@ public class CameraController : MonoBehaviour
 
     [SerializeField]
     private float lookAngle = 45f;
-
-    [SerializeField]
-    private Transform lookAt = null;
-
     private Vector3 offset = Vector3.zero;
     private Vector3 smoothDampVelocity = Vector3.zero;
     private Vector3 smoothDampForward = Vector3.zero;
