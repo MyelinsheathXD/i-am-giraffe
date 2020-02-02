@@ -14,10 +14,10 @@ TagManager:
   - 
   - 
   - Player
-  - PlayerOnly
+  - PlayerOrItem
   - Ground
   - NoSelfCollisions
-  - 
+  - Item
   - 
   - 
   - 

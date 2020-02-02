@@ -20,13 +20,23 @@ public class LevelManager : MonoBehaviour
     }
 
     [SerializeField]
-    private Item.Type[] mainItems = null;
+    private Item[] mainItems = null;
+    public Item[] MainItems
+    {
+        get { return mainItems; }
+    }
+
     private Item.Type[] secondaryItems = null;
 
     private float startTime = 0;
     private float endTime = 0;
 
     private float hatsPerMinute = 0;
+
+    private void Awake()
+    {
+        s_instance = this;
+    }
 
     public void StartLevel()
     {

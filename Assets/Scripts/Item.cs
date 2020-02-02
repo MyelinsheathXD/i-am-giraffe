@@ -43,6 +43,7 @@ public class Item : MonoBehaviour
         if (broken) return;
         broken = true;
         GameObject newObject = Instantiate(brokenPrefab, this.transform.position, this.transform.rotation);
+        newObject.transform.localScale = this.transform.localScale;
 
         Rigidbody[] pieces = newObject.GetComponentsInChildren<Rigidbody>();
         foreach(Rigidbody p in pieces)
