@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 3652413870938284204}
   - component: {fileID: 8377826514818451244}
   m_Layer: 12
-  m_Name: Pot
+  m_Name: SpecialPot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakImpulse: 4
-  brokenPrefab: {fileID: 5440097574348005463, guid: b95a9abe2f350c946bcad402fbb312f5,
+  brokenPrefab: {fileID: 5440097574348005463, guid: aaf056db3601b624a9874c31030f4d58,
     type: 3}
 --- !u!54 &8377826514818451244
 Rigidbody:
@@ -191,7 +191,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e6417df45a307bf4989f7c664c5bb194, type: 2}
+      objectReference: {fileID: 2100000, guid: d9da96845a1fefa4c834d6a968b78eda, type: 2}
     - target: {fileID: -927199367670048503, guid: 6a8d3637ed602d34a8afdd3a8b5005fc,
         type: 3}
       propertyPath: m_Name
