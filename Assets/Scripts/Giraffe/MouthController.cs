@@ -24,9 +24,13 @@ public class MouthController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (open)
+        if (collision.rigidbody != null)
         {
-            Grab(collision.rigidbody);
+            Item i = collision.rigidbody.GetComponent<Item>();
+            if (i != null && open)
+            {
+                Grab(collision.rigidbody);
+            }
         }
     }
 

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2226419712603124812}
   - component: {fileID: 5623039863811050670}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 4645200634187285991}
   - component: {fileID: 3652413870938284204}
   - component: {fileID: 8377826514818451244}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,6 +191,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pot
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 6a8d3637ed602d34a8afdd3a8b5005fc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a8d3637ed602d34a8afdd3a8b5005fc, type: 3}

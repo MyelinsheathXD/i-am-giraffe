@@ -34,7 +34,7 @@ public class CameraController : MonoBehaviour
         Vector3 targetPos = followBack.position - (targetForward * followDistance) + (Vector3.up * followHeight);
         this.transform.position = Vector3.SmoothDamp(this.transform.position, targetPos, ref smoothDampVelocity, 0.3f);
 
-        this.transform.forward = Vector3.SmoothDamp(this.transform.forward, targetForward, ref smoothDampForward, 1f);
+        this.transform.forward = Vector3.SmoothDamp(this.transform.forward, targetForward, ref smoothDampForward, 0.3f);
 
         Vector3 eulerAngles = this.transform.eulerAngles;
         eulerAngles.x = lookAngle;

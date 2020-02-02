@@ -27,6 +27,9 @@ public class Walker : MonoBehaviour
     [SerializeField]
     private float turnSpeed = 45f;
 
+    [SerializeField]
+    private float inPlaceTurnSpeed = 45f;
+
     [Header("Keyframes")]
 
     [SerializeField]
@@ -66,6 +69,9 @@ public class Walker : MonoBehaviour
     [SerializeField]
     private TargetSet backStepUp = null;
 
+    new private Rigidbody rigidbody = null;
+    private RigidbodyConstraints defaultConstraints = 0;
+
     private bool walking = false;
     private bool walkingInPlace = false;
     private bool walkBackwards = false;
@@ -73,24 +79,27 @@ public class Walker : MonoBehaviour
 
     private void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
+        defaultConstraints = rigidbody.constraints;
         StartCoroutine(WalkForward());
         StartCoroutine(WalkInPlace());
     }
 
     private void Update()
     {
-        float hIn = Input.GetAxis("Horizontal");
-        float vIn = Input.GetAxis("Vertical");
+        float hIn = Input.GetAxisRaw("Horizontal");
+        float vIn = Input.GetAxisRaw("Vertical");
         if (hIn != 0 || vIn != 0)
         {
-            torsoDirection.facingDirection = Quaternion.Euler(0, hIn * turnSpeed * Time.deltaTime, 0) * torsoDirection.facingDirection;
             if (vIn == 0)
             {
+                torsoDirection.facingDirection = Quaternion.Euler(0, hIn * inPlaceTurnSpeed * Time.deltaTime, 0) * torsoDirection.facingDirection;
                 walkingInPlace = true;
                 walking = false;
             }
-            else if (hIn == 0)
+            else
             {
+                torsoDirection.facingDirection = Quaternion.Euler(0, hIn * turnSpeed * Time.deltaTime, 0) * torsoDirection.facingDirection;
                 walkBackwards = (vIn < 0);
                 walking = true;
                 walkingInPlace = false;
@@ -100,6 +109,17 @@ public class Walker : MonoBehaviour
         {
             walkingInPlace = false;
             walking = false;
+        }
+
+        foreach (Leg singleLeg in legs)
+        {
+            singleLeg.constantForce.force = Vector2.up * (walkingInPlace ? -50 : -1000);
+        }
+
+        this.rigidbody.constraints = defaultConstraints;
+        if (walkingInPlace)
+        {
+            this.rigidbody.constraints |= RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
         }
     }
 
@@ -112,6 +132,7 @@ public class Walker : MonoBehaviour
         body.AddForceAtPosition(forwardDir * forwardForce * Time.fixedDeltaTime, body.transform.position + body.transform.up * 3f, ForceMode.Impulse);
     }
 
+    private float stepOffset = 0.25f;
     private float delay = 0.10f;
 
     private IEnumerator WalkForward()
@@ -119,20 +140,20 @@ public class Walker : MonoBehaviour
         while (true)
         {
             yield return StartCoroutine(WaitForWalking());
-            yield return TakeStep(LegIndex.BackRight, walkBackwards);
-            yield return new WaitForSeconds(delay * 0.05f);
+            StartCoroutine(TakeStep(LegIndex.BackRight, walkBackwards));
+            yield return new WaitForSeconds(stepOffset);
 
             yield return StartCoroutine(WaitForWalking());
-            yield return TakeStep(LegIndex.FrontRight, walkBackwards);
-            yield return new WaitForSeconds(delay * 0.05f);
+            StartCoroutine(TakeStep(LegIndex.FrontRight, walkBackwards));
+            yield return new WaitForSeconds(stepOffset);
 
             yield return StartCoroutine(WaitForWalking());
-            yield return TakeStep(LegIndex.BackLeft, walkBackwards);
-            yield return new WaitForSeconds(delay * 0.05f);
+            StartCoroutine(TakeStep(LegIndex.BackLeft, walkBackwards));
+            yield return new WaitForSeconds(stepOffset);
 
             yield return StartCoroutine(WaitForWalking());
-            yield return TakeStep(LegIndex.FrontLeft, walkBackwards);
-            yield return new WaitForSeconds(delay * 0.05f);
+            StartCoroutine(TakeStep(LegIndex.FrontLeft, walkBackwards));
+            yield return new WaitForSeconds(stepOffset);
         }
     }
 
@@ -141,20 +162,20 @@ public class Walker : MonoBehaviour
         while (true)
         {
             yield return StartCoroutine(WaitForWalkInPlace());
-            yield return TakeStepInPlace(LegIndex.BackRight);
-            yield return new WaitForSeconds(delay * 0.05f);
+            StartCoroutine(TakeStepInPlace(LegIndex.BackRight));
+            yield return new WaitForSeconds(stepOffset);
 
             yield return StartCoroutine(WaitForWalkInPlace());
-            yield return TakeStepInPlace(LegIndex.FrontRight);
-            yield return new WaitForSeconds(delay * 0.05f);
+            StartCoroutine(TakeStepInPlace(LegIndex.FrontRight));
+            yield return new WaitForSeconds(stepOffset);
 
             yield return StartCoroutine(WaitForWalkInPlace());
-            yield return TakeStepInPlace(LegIndex.BackLeft);
-            yield return new WaitForSeconds(delay * 0.05f);
+            StartCoroutine(TakeStepInPlace(LegIndex.BackLeft));
+            yield return new WaitForSeconds(stepOffset);
 
             yield return StartCoroutine(WaitForWalkInPlace());
-            yield return TakeStepInPlace(LegIndex.FrontLeft);
-            yield return new WaitForSeconds(delay * 0.05f);
+            StartCoroutine(TakeStepInPlace(LegIndex.FrontLeft));
+            yield return new WaitForSeconds(stepOffset);
         }
     }
 
@@ -234,13 +255,13 @@ public class Walker : MonoBehaviour
         if (LegIndex.FrontLeft == legIndex || LegIndex.FrontRight == legIndex)
         {
             SetTargets(legIndexValue, frontStepUp);
-            yield return new WaitForSeconds(delay * 3);
+            yield return new WaitForSeconds(delay * 5);
             SetTargets(legIndexValue, defaultStep);
         }
         else
         {
             SetTargets(legIndexValue, backStepUp);
-            yield return new WaitForSeconds(delay * 3);
+            yield return new WaitForSeconds(delay * 5);
             SetTargets(legIndexValue, defaultStep);
         }
         takingStep[legIndexValue] = false;
