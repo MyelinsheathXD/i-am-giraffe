@@ -1013,8 +1013,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b585adaedf3e4478d81efbd8436363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainItems:
-  - {fileID: 0}
+  mainItems: []
+  restartMessage: {fileID: 0}
   nextLevel: Level5
 --- !u!65 &1528754152
 BoxCollider:
