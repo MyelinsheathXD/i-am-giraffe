@@ -16,10 +16,13 @@ public class FinishLine : MonoBehaviour
     private bool triggered = false;
     private HashSet<GameObject> crossedLine = new HashSet<GameObject>();
     private bool allTargetItemsCrossed = false;
+    private AudioSource applause = null;
 
     private void Start()
     {
         if (LevelManager.Instance.MainItems.Length == 0) allTargetItemsCrossed = true;
+
+        applause = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -57,6 +60,8 @@ public class FinishLine : MonoBehaviour
 
     private IEnumerator Confetti()
     {
+        applause.Play();
+
         foreach(ParticleSystem ps in confettiSystems)
         {
             ps.Play();
