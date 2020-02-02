@@ -5960,7 +5960,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headPosTargeter: {fileID: 9172052355192712997}
   upPos: {x: -5, y: 3, z: 0}
-  downPos: {x: 0.84, y: 3.66, z: 0}
+  downPos: {x: 5, y: 3.66, z: 0}
   leftPos: {x: 0, y: 2.64, z: 4}
   rightPos: {x: 0, y: 2.64, z: -4}
   speed: 0.05

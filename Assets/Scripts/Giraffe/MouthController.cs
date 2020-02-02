@@ -26,8 +26,8 @@ public class MouthController : MonoBehaviour
     {
         if (collision.rigidbody != null)
         {
-            Item i = collision.rigidbody.GetComponent<Item>();
-            if (i != null)
+            Debug.Log(collision.collider.gameObject);
+            if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Item"))
             {
                 Grab(collision.rigidbody);
             }
