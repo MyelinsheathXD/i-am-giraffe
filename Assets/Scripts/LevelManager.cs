@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /* Things to track
     Time
@@ -36,6 +37,7 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         s_instance = this;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void StartLevel()
@@ -54,5 +56,10 @@ public class LevelManager : MonoBehaviour
         float totalTime = Time.time - startTime;
         float weight = Time.deltaTime / (totalTime + Time.deltaTime);
         hatsPerMinute = ((float)Giraffe.Instance.numHats * weight) + (hatsPerMinute * (1 - weight));
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().path);
+        }
     }
 }

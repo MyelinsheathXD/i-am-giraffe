@@ -15,7 +15,7 @@ public class MouthController : MonoBehaviour
             open = true;
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonDown(0))
         {
             open = false;
             Release();
@@ -26,8 +26,8 @@ public class MouthController : MonoBehaviour
     {
         if (collision.rigidbody != null)
         {
-            Item i = collision.rigidbody.GetComponent<Item>();
-            if (i != null && open)
+            Debug.Log(collision.collider.gameObject);
+            if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Item"))
             {
                 Grab(collision.rigidbody);
             }

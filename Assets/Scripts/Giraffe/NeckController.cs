@@ -33,11 +33,10 @@ public class NeckController : MonoBehaviour
 
     private void Update()
     {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 mouseDiff = mousePos - lastMousePos;
-        lastMousePos = mousePos;
+        float hIn = Input.GetAxisRaw("Mouse X");
+        float vIn = Input.GetAxisRaw("Mouse Y");
 
-        pos += mouseDiff * speed;
+        pos += new Vector3(hIn, vIn, 0) * speed;
         pos.x = Mathf.Clamp(pos.x, -1, 1);
         pos.y = Mathf.Clamp(pos.y, -1, 1);
         pos.z = Mathf.Clamp(pos.z, -1, 1);
