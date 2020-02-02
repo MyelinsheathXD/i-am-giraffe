@@ -8,6 +8,7 @@ public class MainMusic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
         DontDestroyOnLoad(this.gameObject);
     }
 }
