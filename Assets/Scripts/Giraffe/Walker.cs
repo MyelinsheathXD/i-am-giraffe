@@ -68,6 +68,7 @@ public class Walker : MonoBehaviour
 
     private bool walking = false;
     private bool walkingInPlace = false;
+    private bool walkBackwards = false;
     private bool[] takingStep = new bool[4];
 
     private void Start()
@@ -90,6 +91,7 @@ public class Walker : MonoBehaviour
             }
             else if (hIn == 0)
             {
+                walkBackwards = (vIn < 0);
                 walking = true;
                 walkingInPlace = false;
             }
@@ -117,19 +119,19 @@ public class Walker : MonoBehaviour
         while (true)
         {
             yield return StartCoroutine(WaitForWalking());
-            yield return TakeStep(LegIndex.BackRight);
+            yield return TakeStep(LegIndex.BackRight, walkBackwards);
             yield return new WaitForSeconds(delay * 0.05f);
 
             yield return StartCoroutine(WaitForWalking());
-            yield return TakeStep(LegIndex.FrontRight);
+            yield return TakeStep(LegIndex.FrontRight, walkBackwards);
             yield return new WaitForSeconds(delay * 0.05f);
 
             yield return StartCoroutine(WaitForWalking());
-            yield return TakeStep(LegIndex.BackLeft);
+            yield return TakeStep(LegIndex.BackLeft, walkBackwards);
             yield return new WaitForSeconds(delay * 0.05f);
 
             yield return StartCoroutine(WaitForWalking());
-            yield return TakeStep(LegIndex.FrontLeft);
+            yield return TakeStep(LegIndex.FrontLeft, walkBackwards);
             yield return new WaitForSeconds(delay * 0.05f);
         }
     }
@@ -156,19 +158,28 @@ public class Walker : MonoBehaviour
         }
     }
 
-    private IEnumerator TakeStep(LegIndex legIndex)
+    private IEnumerator TakeStep(LegIndex legIndex, bool backwards)
     {
         int legIndexValue = (int)legIndex;
         takingStep[legIndexValue] = true;
         if (LegIndex.FrontLeft == legIndex || LegIndex.FrontRight == legIndex)
         {
-            SetTargets(legIndexValue, frontStepForward);
+            SetTargets(legIndexValue, frontStepForward, backwards);
             yield return new WaitForSeconds(delay);
-            SetTargets(legIndexValue, frontStepExtended);
+            SetTargets(legIndexValue, frontStepExtended, backwards);
 
             Leg leg = legs[legIndexValue];
             Vector3 point = body.transform.InverseTransformPoint(leg.ankle.transform.position);
-            while (point.y < 3f)
+            while (point.y < 3f && !backwards)
+            {
+                if (walkingInPlace)
+                {
+                    yield break;
+                }
+                yield return null;
+                point = body.transform.InverseTransformPoint(leg.ankle.transform.position);
+            }
+            while (point.y > 0 && backwards)
             {
                 if (walkingInPlace)
                 {
@@ -178,19 +189,28 @@ public class Walker : MonoBehaviour
                 point = body.transform.InverseTransformPoint(leg.ankle.transform.position);
             }
 
-            SetTargets(legIndexValue, frontStepGrounded);
+            SetTargets(legIndexValue, frontStepGrounded, backwards);
         }
         else
         {
-            SetTargets(legIndexValue, backStepRetracted);
+            SetTargets(legIndexValue, backStepRetracted, backwards);
             yield return new WaitForSeconds(delay * 2f);
-            SetTargets(legIndexValue, backStepForward);
+            SetTargets(legIndexValue, backStepForward, backwards);
             yield return new WaitForSeconds(delay);
-            SetTargets(legIndexValue, backStepExtended);
+            SetTargets(legIndexValue, backStepExtended, backwards);
 
             Leg leg = legs[legIndexValue];
             Vector3 point = body.transform.InverseTransformPoint(leg.ankle.transform.position);
-            while (point.y < 0.6f)
+            while (point.y < 0.6f && !backwards)
+            {
+                if (walkingInPlace)
+                {
+                    yield break;
+                }
+                yield return null;
+                point = body.transform.InverseTransformPoint(leg.ankle.transform.position);
+            }
+            while (point.y > -1.5f && backwards)
             {
                 if (walkingInPlace)
                 {
@@ -200,9 +220,9 @@ public class Walker : MonoBehaviour
                 point = body.transform.InverseTransformPoint(leg.ankle.transform.position);
             }
 
-            SetTargets(legIndexValue, backStepGrounded);
+            SetTargets(legIndexValue, backStepGrounded, backwards);
             yield return new WaitForSeconds(delay);
-            SetTargets(legIndexValue, backStepGroundedStraight);
+            SetTargets(legIndexValue, backStepGroundedStraight, backwards);
         }
         takingStep[legIndexValue] = false;
     }
@@ -251,10 +271,13 @@ public class Walker : MonoBehaviour
         }
     }
 
-    private void SetTargets(int legIndex, TargetSet set)
+    private void SetTargets(int legIndex, TargetSet set, bool reverseHip = false)
     {
+        Quaternion hipQuat = set.hip;
+        if (reverseHip) hipQuat.x *= -1;
+
         Leg leg = legs[legIndex];
-        leg.hip.targetRotation = set.hip;
+        leg.hip.targetRotation = hipQuat;
         leg.knee.targetRotation = set.knee;
         leg.ankle.targetRotation = set.ankle;
         leg.constantForce.enabled = set.useConstantForce;
