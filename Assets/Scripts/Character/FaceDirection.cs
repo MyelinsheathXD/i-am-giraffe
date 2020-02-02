@@ -9,8 +9,7 @@ public class FaceDirection : MonoBehaviour
     [SerializeField]
     private Vector3 bodyForward = new Vector3(0, 0, 2);
 
-    [SerializeField]
-    private Vector3 facingDirection = Vector3.zero;
+    public Vector3 facingDirection = Vector3.zero;
 
     [SerializeField]
     private float facingForce = 800;
