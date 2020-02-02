@@ -6411,6 +6411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainItems:
   - {fileID: 1332609317}
+  nextLevel: Level5
 --- !u!1001 &1280598666
 PrefabInstance:
   m_ObjectHideFlags: 0
