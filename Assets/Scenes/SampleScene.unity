@@ -699,7 +699,7 @@ Transform:
   m_GameObject: {fileID: 307648834}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 20, y: 1, z: 50}
+  m_LocalScale: {x: 50, y: 1, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -1529,6 +1529,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2143051778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2143051779}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2143051779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143051778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06, y: 0.6, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6139840098930395419}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &19424522099287181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1972,13 +2002,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 3000
-    positionDamper: 500
+    positionSpring: 1500
+    positionDamper: 200
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 3000
-    positionDamper: 500
+    positionSpring: 1500
+    positionDamper: 350
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -2196,7 +2226,7 @@ GameObject:
   - component: {fileID: 6363626927128336447}
   - component: {fileID: 1479514758602232277}
   - component: {fileID: 1479514758602232278}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Leg Front Left Ankle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2579,7 +2609,7 @@ Transform:
   m_Children:
   - {fileID: 2447890628923371671}
   m_Father: {fileID: 6139840098930395419}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2313514836473489788
 Transform:
@@ -2878,7 +2908,7 @@ Transform:
   m_Children:
   - {fileID: 2957019427465174731}
   m_Father: {fileID: 6139840098930395419}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2957019427465174731
 Transform:
@@ -3037,7 +3067,7 @@ Transform:
   m_Children:
   - {fileID: 8195232229260450157}
   m_Father: {fileID: 6139840098930395419}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3172549102345557380
 GameObject:
@@ -3064,7 +3094,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3172549102345557380}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce76a7790105482478cf176f639a30a4, type: 3}
   m_Name: 
@@ -3249,7 +3279,7 @@ GameObject:
   - component: {fileID: 2242913333569825071}
   - component: {fileID: 3751528158780308065}
   - component: {fileID: 3751528158780308066}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Leg Back Left Ankle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3419,7 +3449,7 @@ Transform:
   m_Children:
   - {fileID: 7444842271193637496}
   m_Father: {fileID: 6139840098930395419}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &4491771569168424883
 SkinnedMeshRenderer:
@@ -3648,7 +3678,7 @@ GameObject:
   - component: {fileID: 4915174329770945953}
   - component: {fileID: 4915174329770945954}
   - component: {fileID: 4915174329770945955}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Leg Back Right Knee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3742,13 +3772,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 3000
-    positionDamper: 500
+    positionSpring: 1500
+    positionDamper: 200
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 3000
-    positionDamper: 500
+    positionSpring: 1500
+    positionDamper: 350
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -3791,7 +3821,7 @@ GameObject:
   - component: {fileID: 5124116285977558425}
   - component: {fileID: 5124116285977558426}
   - component: {fileID: 5124116285977558427}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Leg Front Right Knee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3885,13 +3915,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 3000
-    positionDamper: 500
+    positionSpring: 1500
+    positionDamper: 200
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 3000
-    positionDamper: 500
+    positionSpring: 1500
+    positionDamper: 350
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -3953,7 +3983,7 @@ GameObject:
   - component: {fileID: 5277504447679915837}
   - component: {fileID: 5277504447679915838}
   - component: {fileID: 5277504447679915839}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Leg Front Left Knee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4047,13 +4077,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 3000
-    positionDamper: 500
+    positionSpring: 1500
+    positionDamper: 200
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 3000
-    positionDamper: 500
+    positionSpring: 1500
+    positionDamper: 350
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -4262,7 +4292,7 @@ Transform:
   m_Children:
   - {fileID: 5427271377170320262}
   m_Father: {fileID: 6139840098930395419}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6054247573866472897
 Transform:
@@ -4290,7 +4320,7 @@ GameObject:
   - component: {fileID: 2313514836473489788}
   - component: {fileID: 6072114541111873209}
   - component: {fileID: 6072114541111873210}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Leg Front Right Ankle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4419,6 +4449,7 @@ Transform:
   m_LocalPosition: {x: -1.1372552, y: -0.00000007988115, z: -0.40526628}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2143051779}
   - {fileID: 2254250163212977372}
   - {fileID: 2929720171447689521}
   - {fileID: 2975649078978522785}
@@ -4622,7 +4653,7 @@ Transform:
   m_Children:
   - {fileID: 2412120246561698452}
   m_Father: {fileID: 6139840098930395419}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6630372042370282269
 Transform:
@@ -4859,13 +4890,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 3000
-    positionDamper: 500
+    positionSpring: 1500
+    positionDamper: 200
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 3000
-    positionDamper: 500
+    positionSpring: 1500
+    positionDamper: 350
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -5002,13 +5033,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 3000
-    positionDamper: 500
+    positionSpring: 1500
+    positionDamper: 200
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 3000
-    positionDamper: 500
+    positionSpring: 1500
+    positionDamper: 350
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -5053,7 +5084,7 @@ GameObject:
   - component: {fileID: 7313228973889843525}
   - component: {fileID: 7313228973889843526}
   - component: {fileID: 7313228973889843527}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Leg Front Right Ankle_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5205,7 +5236,7 @@ ConstantForce:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7313228973889843522}
   m_Enabled: 1
-  m_Force: {x: 0, y: -500, z: 0}
+  m_Force: {x: 0, y: -1000, z: 0}
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
@@ -5221,7 +5252,7 @@ GameObject:
   - component: {fileID: 7387206083441938578}
   - component: {fileID: 7387206083441938579}
   - component: {fileID: 7387206083441938580}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Leg Back Left Knee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5315,13 +5346,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 3000
-    positionDamper: 500
+    positionSpring: 1500
+    positionDamper: 200
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 3000
-    positionDamper: 500
+    positionSpring: 1500
+    positionDamper: 350
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -5520,13 +5551,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 3000
-    positionDamper: 500
+    positionSpring: 1500
+    positionDamper: 200
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 3000
-    positionDamper: 500
+    positionSpring: 1500
+    positionDamper: 350
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -5816,7 +5847,7 @@ GameObject:
   - component: {fileID: 8205727525041999815}
   - component: {fileID: 8205727525041999816}
   - component: {fileID: 8205727525041999817}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Leg Front Left Ankle_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5968,7 +5999,7 @@ ConstantForce:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8205727525041999812}
   m_Enabled: 1
-  m_Force: {x: 0, y: -500, z: 0}
+  m_Force: {x: 0, y: -1000, z: 0}
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
@@ -6059,7 +6090,7 @@ GameObject:
   - component: {fileID: 410027011595684592}
   - component: {fileID: 8905379032647788430}
   - component: {fileID: 8905379032647788431}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Leg Back Right Ankle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6188,7 +6219,6 @@ GameObject:
   - component: {fileID: 6139840098930395419}
   - component: {fileID: 8962624203170668320}
   - component: {fileID: 8962624203170668321}
-  - component: {fileID: 8962624203170668322}
   - component: {fileID: 8962624203170668323}
   - component: {fileID: 8962624203170668325}
   - component: {fileID: 8962624203170668324}
@@ -6228,25 +6258,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.36, y: 2.46, z: 1}
   m_Center: {x: -0.04, y: 0.91, z: 0}
---- !u!114 &8962624203170668322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8962624203170668319}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81f64968da60dc54092e1325450c050c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidbodies:
-  - {fileID: 8962624203170668320}
-  - {fileID: 7313228973889843524}
-  - {fileID: 8205727525041999814}
-  - {fileID: 9213704565557915931}
-  - {fileID: 9127938616107964123}
-  facer: {fileID: 0}
 --- !u!114 &8962624203170668323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6259,10 +6270,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe1eb5c96d30944bbe8778a7f1c6f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyForward: {x: 0, y: 2, z: 0}
+  bodyForward: {x: 0, y: 1, z: 0}
   facingDirection: {x: 0, y: 0, z: 2}
-  facingForce: 200
-  leadTime: 0.3
+  facingForce: 400
+  leadTime: 0
 --- !u!114 &8962624203170668324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6293,14 +6304,15 @@ MonoBehaviour:
     ankle: {fileID: 8905379032647788431}
     constantForce: {fileID: 9213704565557915934}
   body: {fileID: 8962624203170668320}
-  forwardForce: 200
+  forwardForce: 0
+  torsoDirection: {fileID: 8962624203170668323}
   frontStepForward:
-    hip: {x: 0.56, y: 0, z: 0, w: 1}
+    hip: {x: 1.6, y: 0, z: 0, w: 1}
     knee: {x: -0.7, y: 0, z: 0, w: 1}
     ankle: {x: 0, y: 0, z: 0, w: 1}
     useConstantForce: 0
   frontStepExtended:
-    hip: {x: 0.56, y: 0, z: 0, w: 1}
+    hip: {x: 1.6, y: 0, z: 0, w: 1}
     knee: {x: 0, y: 0, z: 0, w: 1}
     ankle: {x: 0, y: 0, z: 0, w: 1}
     useConstantForce: 0
@@ -6311,7 +6323,7 @@ MonoBehaviour:
     useConstantForce: 1
   backStepRetracted:
     hip: {x: 0, y: 0, z: 0, w: 1}
-    knee: {x: 1, y: 0, z: 0, w: 1}
+    knee: {x: 2, y: 0, z: 0, w: 1}
     ankle: {x: 0, y: 0, z: 0, w: 1}
     useConstantForce: 0
   backStepForward:
@@ -6325,6 +6337,11 @@ MonoBehaviour:
     ankle: {x: 0, y: 0, z: 0, w: 1}
     useConstantForce: 0
   backStepGrounded:
+    hip: {x: 0.33, y: 0, z: 0, w: 1}
+    knee: {x: 0, y: 0, z: 0, w: 1}
+    ankle: {x: 0, y: 0, z: 0, w: 1}
+    useConstantForce: 1
+  backStepGroundedStraight:
     hip: {x: 0, y: 0, z: 0, w: 1}
     knee: {x: 0, y: 0, z: 0, w: 1}
     ankle: {x: 0, y: 0, z: 0, w: 1}
@@ -6409,7 +6426,7 @@ GameObject:
   - component: {fileID: 9127938616107964124}
   - component: {fileID: 9127938616107964125}
   - component: {fileID: 9127938616107964126}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Leg Back Left Ankle_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6561,7 +6578,7 @@ ConstantForce:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9127938616107964121}
   m_Enabled: 1
-  m_Force: {x: 0, y: -500, z: 0}
+  m_Force: {x: 0, y: -1000, z: 0}
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
@@ -6579,7 +6596,7 @@ GameObject:
   - component: {fileID: 9213704565557915932}
   - component: {fileID: 9213704565557915933}
   - component: {fileID: 9213704565557915934}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Leg Back Right Ankle_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6731,7 +6748,7 @@ ConstantForce:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9213704565557915929}
   m_Enabled: 1
-  m_Force: {x: 0, y: -500, z: 0}
+  m_Force: {x: 0, y: -1000, z: 0}
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}

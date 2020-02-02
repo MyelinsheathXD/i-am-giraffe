@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     private Transform[] targets = null;
 
     private Vector3 offset = Vector3.zero;
+    private Vector3 smoothDampVelocity = Vector3.zero;
 
     private void Start()
     {
@@ -16,7 +17,8 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        this.transform.position = GetAverageTargetPosition() + offset;
+        Vector3 targetPos = GetAverageTargetPosition() + offset;
+        this.transform.position = Vector3.SmoothDamp(this.transform.position, targetPos, ref smoothDampVelocity, 0.3f);
     }
 
     private Vector3 GetAverageTargetPosition()

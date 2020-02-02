@@ -21,6 +21,9 @@ public class Walker : MonoBehaviour
     [SerializeField]
     private float forwardForce = 0f;
 
+    [SerializeField]
+    private FaceDirection torsoDirection = null;
+
     [Header("Keyframes")]
 
     [SerializeField]
@@ -44,54 +47,122 @@ public class Walker : MonoBehaviour
     [SerializeField]
     private TargetSet backStepGrounded = null;
 
+    [SerializeField]
+    private TargetSet backStepGroundedStraight = null;
+
+    private bool walking = false;
+    private bool[] takingStep = new bool[4];
+
     private void Start()
     {
         StartCoroutine(WalkingQuestionMark());
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        body.AddForceAtPosition(Vector3.forward * forwardForce * Time.fixedDeltaTime, body.transform.position + body.transform.up * 3f, ForceMode.Impulse);
+        float hIn = Input.GetAxis("Horizontal");
+        float vIn = Input.GetAxis("Vertical");
+        if (hIn != 0 || vIn != 0)
+        {
+            torsoDirection.facingDirection = new Vector3(hIn, 0, vIn);
+            walking = true;
+        }
+        else
+        {
+            walking = false;
+        }
     }
 
-    private float delay = 0.15f;
+    private void FixedUpdate()
+    {
+        Vector3 forwardDir = body.transform.up;
+        forwardDir.y = 0;
+        forwardDir.Normalize();
+
+        body.AddForceAtPosition(forwardDir * forwardForce * Time.fixedDeltaTime, body.transform.position + body.transform.up * 3f, ForceMode.Impulse);
+    }
+
+    private float delay = 0.10f;
 
     private IEnumerator WalkingQuestionMark()
     {
-        yield return new WaitForSeconds(3.0f);
         while (true)
         {
-            yield return new WaitForSeconds(delay);
-            SetTargets((int)LegIndex.BackRight, backStepRetracted);
-            yield return new WaitForSeconds(delay);
-            SetTargets((int)LegIndex.BackRight, backStepForward);
-            yield return new WaitForSeconds(delay);
-            SetTargets((int)LegIndex.BackRight, backStepExtended);
-            yield return new WaitForSeconds(delay);
-            SetTargets((int)LegIndex.BackRight, backStepGrounded);
+            yield return StartCoroutine(WaitForWalking());
+            yield return TakeStep(LegIndex.BackRight);
+            yield return new WaitForSeconds(delay * 0.05f);
 
-            yield return new WaitForSeconds(delay);
-            SetTargets((int)LegIndex.FrontRight, frontStepForward);
-            yield return new WaitForSeconds(delay);
-            SetTargets((int)LegIndex.FrontRight, frontStepExtended);
-            yield return new WaitForSeconds(delay);
-            SetTargets((int)LegIndex.FrontRight, frontStepGrounded);
+            yield return StartCoroutine(WaitForWalking());
+            yield return TakeStep(LegIndex.FrontRight);
+            yield return new WaitForSeconds(delay * 0.05f);
 
-            yield return new WaitForSeconds(delay);
-            SetTargets((int)LegIndex.BackLeft, backStepRetracted);
-            yield return new WaitForSeconds(delay);
-            SetTargets((int)LegIndex.BackLeft, backStepForward);
-            yield return new WaitForSeconds(delay);
-            SetTargets((int)LegIndex.BackLeft, backStepExtended);
-            yield return new WaitForSeconds(delay);
-            SetTargets((int)LegIndex.BackLeft, backStepGrounded);
+            yield return StartCoroutine(WaitForWalking());
+            yield return TakeStep(LegIndex.BackLeft);
+            yield return new WaitForSeconds(delay * 0.05f);
 
+            yield return StartCoroutine(WaitForWalking());
+            yield return TakeStep(LegIndex.FrontLeft);
+            yield return new WaitForSeconds(delay * 0.05f);
+        }
+    }
+
+    private IEnumerator TakeStep(LegIndex legIndex)
+    {
+        int legIndexValue = (int)legIndex;
+        takingStep[legIndexValue] = true;
+        if (LegIndex.FrontLeft == legIndex || LegIndex.FrontRight == legIndex)
+        {
+            SetTargets(legIndexValue, frontStepForward);
             yield return new WaitForSeconds(delay);
-            SetTargets((int)LegIndex.FrontLeft, frontStepForward);
+            SetTargets(legIndexValue, frontStepExtended);
+
+            Leg leg = legs[legIndexValue];
+            Vector3 point = body.transform.InverseTransformPoint(leg.ankle.transform.position);
+            while (point.y < 3f)
+            {
+                yield return null;
+                point = body.transform.InverseTransformPoint(leg.ankle.transform.position);
+            }
+
+            SetTargets(legIndexValue, frontStepGrounded);
+        }
+        else
+        {
+            SetTargets(legIndexValue, backStepRetracted);
+            yield return new WaitForSeconds(delay * 2f);
+            SetTargets(legIndexValue, backStepForward);
             yield return new WaitForSeconds(delay);
-            SetTargets((int)LegIndex.FrontLeft, frontStepExtended);
+            SetTargets(legIndexValue, backStepExtended);
+
+            Leg leg = legs[legIndexValue];
+            Vector3 point = body.transform.InverseTransformPoint(leg.ankle.transform.position);
+            while (point.y < 0.6f)
+            {
+                yield return null;
+                point = body.transform.InverseTransformPoint(leg.ankle.transform.position);
+            }
+
+            SetTargets(legIndexValue, backStepGrounded);
             yield return new WaitForSeconds(delay);
-            SetTargets((int)LegIndex.FrontLeft, frontStepGrounded);
+            SetTargets(legIndexValue, backStepGroundedStraight);
+        }
+        takingStep[legIndexValue] = false;
+    }
+
+    private IEnumerator WaitForNotTakingStep(LegIndex legIndex)
+    {
+        int legIndexValue = (int)legIndex;
+        while (takingStep[legIndexValue])
+        {
+            yield return null;
+        }
+    }
+
+    private IEnumerator WaitForWalking()
+    {
+        while (!walking)
+        {
+            yield return null;
         }
     }
 
