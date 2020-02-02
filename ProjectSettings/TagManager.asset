@@ -18,8 +18,8 @@ TagManager:
   - Ground
   - NoSelfCollisions
   - Item
-  - 
-  - 
+  - PlayerOnly
+  - Basketball
   - 
   - 
   - 

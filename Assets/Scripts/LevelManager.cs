@@ -27,6 +27,9 @@ public class LevelManager : MonoBehaviour
         get { return mainItems; }
     }
 
+    [SerializeField]
+    private GameObject restartMessage = null;
+
     public string nextLevel = "";
 
     private Item.Type[] secondaryItems = null;
@@ -62,6 +65,11 @@ public class LevelManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().path);
+        }
+
+        if (mainItems.Length > 0 && mainItems[0] == null)
+        {
+            restartMessage.SetActive(true);
         }
     }
 }
