@@ -27,6 +27,8 @@ public class LevelManager : MonoBehaviour
         get { return mainItems; }
     }
 
+    public string nextLevel = "";
+
     private Item.Type[] secondaryItems = null;
 
     private float startTime = 0;
