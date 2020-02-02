@@ -42,7 +42,8 @@ GameObject:
   - component: {fileID: 7759518288899909984}
   - component: {fileID: 373917674362869306}
   - component: {fileID: 373917674362869309}
-  m_Layer: 0
+  - component: {fileID: 3203364084502734287}
+  m_Layer: 11
   m_Name: Neck -1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,6 +176,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!135 &3203364084502734287
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373917674362869307}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &747357283612972057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1552,7 +1566,7 @@ GameObject:
   - component: {fileID: 2484573329935435138}
   - component: {fileID: 2484573329935435140}
   - component: {fileID: 2484573329935435141}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2229,7 +2243,8 @@ GameObject:
   - component: {fileID: 1534271640477208871}
   - component: {fileID: 3566566533667963624}
   - component: {fileID: 3566566533667963627}
-  m_Layer: 0
+  - component: {fileID: 4433320122147696207}
+  m_Layer: 11
   m_Name: Neck 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2363,6 +2378,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!135 &4433320122147696207
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3566566533667963625}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3781373736423531521
 GameObject:
   m_ObjectHideFlags: 0
@@ -3572,7 +3600,8 @@ GameObject:
   - component: {fileID: 922064444476679340}
   - component: {fileID: 4973986742837140681}
   - component: {fileID: 4973986742837140680}
-  m_Layer: 0
+  - component: {fileID: 9175340912312019344}
+  m_Layer: 11
   m_Name: Neck 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3705,6 +3734,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!135 &9175340912312019344
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4973986742837140678}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4996829813506440005
 GameObject:
   m_ObjectHideFlags: 0
@@ -4948,7 +4990,8 @@ GameObject:
   - component: {fileID: 5061382305830627382}
   - component: {fileID: 6875670632373398216}
   - component: {fileID: 6875670632373398219}
-  m_Layer: 0
+  - component: {fileID: 2928170242603210991}
+  m_Layer: 11
   m_Name: Neck Mid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5081,6 +5124,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!135 &2928170242603210991
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6875670632373398217}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6898566003978328897
 GameObject:
   m_ObjectHideFlags: 0
@@ -5092,7 +5148,8 @@ GameObject:
   - component: {fileID: 151021512035477948}
   - component: {fileID: 6898566003978328896}
   - component: {fileID: 6898566003978328899}
-  m_Layer: 0
+  - component: {fileID: 6938928150210966284}
+  m_Layer: 11
   m_Name: Neck 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5225,6 +5282,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!135 &6938928150210966284
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6898566003978328897}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6901611599091447208
 GameObject:
   m_ObjectHideFlags: 0
@@ -5558,7 +5628,8 @@ GameObject:
   - component: {fileID: 4172718396020457529}
   - component: {fileID: 7832603871019208907}
   - component: {fileID: 7832603871019208906}
-  m_Layer: 0
+  - component: {fileID: 5783945275738192514}
+  m_Layer: 11
   m_Name: Neck -3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5692,6 +5763,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!135 &5783945275738192514
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7832603871019208904}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.35
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7922931287177722332
 GameObject:
   m_ObjectHideFlags: 0
@@ -5904,7 +5988,8 @@ GameObject:
   - component: {fileID: 1373362544163972430}
   - component: {fileID: 8591202014541888384}
   - component: {fileID: 8591202014541888387}
-  m_Layer: 0
+  - component: {fileID: 6317191997448354332}
+  m_Layer: 11
   m_Name: Neck -2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6037,6 +6122,19 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!135 &6317191997448354332
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8591202014541888385}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8715623974613212622
 GameObject:
   m_ObjectHideFlags: 0
